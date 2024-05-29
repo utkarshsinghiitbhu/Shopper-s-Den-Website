@@ -1,0 +1,14 @@
+
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+    <div class="center">
+        <h4 class="center" style="text-align:center">Welcome to Shopper's Den</h1> <br>
+        <a href="{{ url_for('user_login') }}">Are you a User?</a><br>
+        <a href="{{ url_for('merchant_login') }}">Are you a Merchant?</a><br>
+    </div>
+    
+    
+{% endblock %}  

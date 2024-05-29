@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="static/styles.css">
+    <title>Shopper's Den</title>
+</head>
+<body>
+    <div class="center">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{{ url_for('home') }}">Shopper's Den</a>
+          
+          </li>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ url_for('user_login') }}">User</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" a href="{{ url_for('merchant_login') }}">Merchant</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Logout</a>
+              </li>
+              <li class="nav-itm">
+                <a class="nav-link active" href="{{ url_for('cart') }}" >Cart</a>
+              </li>
+            </ul>
+            <form class="d-flex align-items-end" role="search" action="{{url_for('result')}}" >
+                <ul class="navbar-nav">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
+              <button class="btn btn-outline-success" type="submit" >Search</button>
+              </ul>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <hr>
+    <div class="container">
+        <h4>User, Hello you are logged in.</h4> <a href="{{url_for('user_logout')}}" class="text-center">Press here to logout</a><br><br><hr>
+        <div aria-labelledby="navbarDropdown">
+            {% for category in categories %}
+            <a class="dropdown-item" href="{{url_for('get_category', id=category.id)}}">{{category.name}}</a>
+            {% endfor %}
+        </div> <br> <br>
+        <hr>
+        
+        <div class="row">
+            
+
+            {% for product in products %}
+            <div class="'col-md-3" style="margin-right:15vb">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-center">{{product.name}}</h5>
+                        <p class="text-center">Price Rs.{{product.rate}} {{product.unit}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="float-left btn btn-sm btn-primary" >details</a>
+                        <a href="{{url_for('addcart', id=product.id)}}" class="btn btn-sm btn-warning float-right">Buy</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    
+</body>
+</html>

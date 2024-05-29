@@ -1,0 +1,28 @@
+
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="center">
+<form method="POST" action="">
+    {{ form.hidden_tag() }} <br> <br>
+    <select name="category" id="category" class="form-control">
+        <option value="{{getp.category_id}}" style="display: none;">{{getp.category.name}}</option>
+            {% for category in categories %}
+            <option value="{{category.id}}">{{category.name}}</option>
+            {% endfor %}
+   
+    </select> <br> <br>
+    {{ form.name }} <br> <br>
+    {{ form.unit }} <br> <br>
+    {{ form.rate}} <br> <br>
+    {{ form.quantity }} <br> <br>
+    {{ form.submit}} <br> <br>
+</form>
+
+<a href="{{url_for('merchant_cat')}}">Add new categories</a> <br>
+<a href="{{url_for('merchant_logout')}}">Press here to logout</a>
+</div>
+
+
+    
+{% endblock %}

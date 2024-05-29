@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="center"><form method="POST" action="">
+    {{ form.hidden_tag() }} <br>
+    {{ form.name }} <br> <br>
+    {{ form.submit}} <br> <br>
+</form>
+
+<a href="{{url_for('merchant_dashboard')}}">Add new products</a> <br>
+<a href="{{url_for('merchant_logout')}}">Press here to logout</a> <br>
+</div>
+
+
+{% endblock %}

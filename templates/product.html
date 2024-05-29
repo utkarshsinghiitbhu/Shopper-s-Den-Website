@@ -1,0 +1,44 @@
+
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="container">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }} <br> <br>
+        <select name="product_id" id="product_id" class="form-control">
+            {% for product in products %}
+            <option value={{product.id}}>Product Id : {{product.id}}</option>
+            {%endfor%}
+        </select>
+        <br>
+        <select name="pname" id="pname" class="form-control ">
+            {% for product in products %}
+            <option value={{product.name}}>Product Name: {{product.name}}</option>
+            {%endfor%}
+        </select>
+        <br>
+        <select name="price" id="price" class="form-control">
+            {% for product in products %}
+            <option value={{product.rate}}>Product rate: {{product.rate}} {{product.unit}}</option>
+            {%endfor%}  
+        </select>
+        <br>
+        <select name="price" id="price" class="form-control">
+            {% for product in products %}
+            <option value={{product.rate}}>Available Quantity: {{product.quantity}}</option>
+            {%endfor%}  
+        </select>
+        <br><br>
+        <div class="centre">
+            {{ form.quantity }} <br> <br>
+            {{ form.submit}} <br> <br>
+        </div>    
+    </form>
+    <div><a href="{{url_for('user_dashboard')}}">Want to Buy something else?</a><br>
+        <a href="{{url_for('user_logout')}}">Press here to logout</a><br><br></div>
+    
+</div>  
+
+    
+{% endblock %}  

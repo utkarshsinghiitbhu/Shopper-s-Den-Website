@@ -1,0 +1,17 @@
+
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="center">
+    <h4>User Register Page</h4> 
+
+    <form method="POST" action="">
+        {{ form.hidden_tag() }} <br> <br>
+        {{ form.username }} <br> <br>
+        {{ form.password }} <br> <br>
+        {{ form.submit }} <br> <br>
+    </form>
+
+    <a href="{{ url_for('user_login') }}">Already have an account? Log In</a>
+</div>
+{% endblock %}
